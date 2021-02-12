@@ -1,0 +1,33 @@
+复习：
+    无参装饰器:
+        def out (func):
+            def wrapper(*args,**kwargs):
+            res = func(*args,**kwargs)
+            return res
+        return wrapper
+
+
+    装饰器的目标:
+        装饰器就是在不修改被装饰器对象源代码与调用方式的前提下为其添加新功能
+
+    import time
+
+    def index(x,y):
+        print('index->%s %s'%(x,y))
+
+    def outer(func):
+        # func = 被装饰对象的内存地址
+        def wrapper(*args,**kwargs):
+            start = time.time()
+            func(*args,**kwargs)
+            stop = time.time()
+            print(stop-start)
+
+        return wrapper
+
+
+    index = outer(index)  # index = 函数wrapper的内存地址
+
+    index(1,2)
+
+
