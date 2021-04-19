@@ -41,10 +41,29 @@
 
 dictionary = {'a': 1, 'b': 2, 'c': 3}
 dictionary_iterator = dictionary.__iter__()
-# print(dictionary_iterator)
+print(dictionary_iterator)
 
 while True:  # 在一个迭代器取值取完的情况下，在对其取值取不到
     try:
         print(dictionary_iterator.__next__())
     except StopIteration:
         break
+
+# 3、可迭代对象与迭代器对象详解
+# 可迭代对象("可以转换成迭代的对象") :内置有__iter__方法对象
+#   可迭代对象.__iter__():得到迭代器对象
+
+# 迭代器对象:内置有__next__方法并且内置有__iter__方法的对象
+#   迭代器对象.__next__():得到迭代器的下一个值
+#   迭代器对象.__iter__():得到迭代器本身，说白了调了跟没调一个样子
+
+
+# for循环的工作原理：for循环可以称之为迭代器循环
+
+d = {'a': 1, 'b': 2, 'c': 3}
+
+# 1、d.__iter__()得到一个迭代器对象
+# 2、迭代器对象.__next__()拿到一个返回值，然后将该返回值赋值给K
+# 3、循环往复步骤2，直接抛出StopIteration异常for循环会捕捉异常然后结束循环
+for k in d:
+    print(k)
