@@ -25,3 +25,25 @@ next(g)
 
 print('aaa'.__len__())
 print(len('aaa'))  # 'aaa'.__len__()
+
+
+# 应用案例
+def my_range(start, stop, step=1):
+    print('start...')
+    while start < stop:
+        yield start
+        start += step
+        yield start
+
+    print('end...')
+
+
+'''
+g = my_range(1, 5, 2)  # 1 3
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+'''
+for n in my_range(1, 7, 2):
+    print(n)
