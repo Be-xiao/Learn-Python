@@ -1,0 +1,53 @@
+1、有参装饰器auth
+    form functools import wrapper
+    def decode(x,y,z):
+        def outer(func)
+            @wraps(func)
+            wrapper(*args,**kwargs):
+                res = func(*args,**kwargs)
+                return res
+            return wrapper
+        return outer
+
+2、分析@auth(db_type = "file")的执行过程
+    @decode(1,2,3) => @outer => 原函数名 = outer(被装饰的函数)
+
+3、简述什么是可迭代对象、什么是迭代器对象
+    __iter__
+    __next__
+
+4、简述迭代器的优缺点
+    优点：
+    为序列和非序列类型提供一种统一的取值方式
+
+    惰性计算：迭代器对象表示的是一个数据流，可以只在需要时才去调用next来计算一个只，就迭代器本身来说，同一
+    在内存中只有一个值，因而可以存放无限大的数据流，而对于其他容器类型，如列表，需要把所有的元素都存放在内存
+    中，受内存大小限制，可以存放的值的个数是有限的。
+
+    def add():
+        count = 0
+        while True:
+            count += 1
+            yield count
+
+    g = add()
+    print(next(g))
+
+
+    缺点：
+    除非取尽，否则无法获取迭代器的长度
+
+    只能取下一个值，不能回到开始，更像是‘一次性的’，迭代器产生后的唯一目标就是重复执行next方法直到值取尽，否
+    则就会停留在某个位置，等待下一次调用next；诺是要再次迭代同个对象，你只能重新调用iter方法创建一个新的迭代
+    器对象，如果有两个或者多个循环使用同一个迭代器，必然只会有一个循环能取到值。
+
+5、简述for循环工作原理
+    1、d.__iter__()得到一个迭代器对象
+    2、迭代器对象.__next__()拿到一个返回值，然后将该返回值赋值给K
+    3、循环往复步骤2，直到抛出StopIteration异常for循环会捕捉异常然后结束循环
+
+    for x in 可迭代对象：  # 可迭代对象.__iter__() => 迭代器对象 => x = next(迭代器对象)
+        print(x)
+
+
+6、自定义迭代器实现range功能
