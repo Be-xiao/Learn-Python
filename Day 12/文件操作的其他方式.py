@@ -29,13 +29,13 @@ with open('h.txt', mode='rt', encoding='utf - 8') as f:
     #      'sssd'.encode('utf-8'),
     #      'as442w'.encode('utf-8'),
     #      ]
-# 如果实纯英文字符，可以直接加前缀b得到bytes类型
+    # 如果实纯英文字符，可以直接加前缀b得到bytes类型
     l = [
         b'111aa\n',
         b'sssd',
         b'as442w',
-     ]
-# 补充2： '上'.encode('utf-8')等同于bytes('上',encoding = 'utf-8')
+    ]
+    # 补充2： '上'.encode('utf-8')等同于bytes('上',encoding = 'utf-8')
     '''
     >>> '上'.encode('utf-8')
     b'\xe4\xb8\x8a'
@@ -45,12 +45,12 @@ with open('h.txt', mode='rt', encoding='utf - 8') as f:
     f.writelines(l)
 
 # 3、flush:通常出现在测试环节
-with open('g.txt',mode='wb') as f:
+with open('g.txt', mode='wb') as f:
     f.write('发发发')
     f.flush()
 
 # 4、了解
-with open('g.txt',mode='wb',encoding= 'utf-8') as f:
+with open('g.txt', mode='wb', encoding='utf-8') as f:
     print(f.readable())  # 判断是否可读
     print(f.writable())  # 判断是否可写
     print(f.name)  # 文件的名字

@@ -134,6 +134,9 @@ transfer()
 # 语法糖
 
 
+import imp
+
+
 def login(db_type):
     def deco(func):
         def wrapper(*args, **kwargs):
@@ -141,7 +144,7 @@ def login(db_type):
             inp_password = input('Your password>>:').strip()
 
             if db_type == 'file':  # 判断文件是否来源于文件
-                with open('/home/noah/Documents/Code/venv/python/Day 18/user.txt', mode='rt', encoding='utf-8') as f:
+                with open('/home/noah/Documents/code/venv/python/Day 18/user.txt', mode='rt', encoding='utf-8') as f:
                     for line in f:
                         username, password = line.strip().split(':')
                         if inp_username == username and inp_password == password:
